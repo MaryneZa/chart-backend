@@ -10,7 +10,7 @@ exports.hashedPassword = async (password) => {
 
 }
 
-exports.VerifyPassword = async (password, hashedPassword) =>{
+exports.verifyPassword = async (password, hashedPassword) =>{
     try {
         const isHash = await bcrypt.compare(password, hashedPassword);
         return isHash

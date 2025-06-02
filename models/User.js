@@ -2,7 +2,10 @@ const mongoose = require('../config/database');
 
 const userSchema = new mongoose.Schema({
     // note:  _id: true (enable) || false (disable),
-    email: String,
+    email: {
+        type: String,
+        unique: true
+    },
     password: String
 }, {
     statics: {
@@ -13,5 +16,9 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model('User', userSchema);
+
+await User.createCollection().then(() => {
+  console.log('User collection is created!');
+});
 
 exports.module = User
