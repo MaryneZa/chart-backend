@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: chart-mongodb
+    ports:
+      - "27027:27017"
+    volumes:
+      - chart_mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: rootuser
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+      MONGO_INITDB_DATABASE: mydatabase
+    restart: unless-stopped
+volumes:
+  chart_mongodb_data:
