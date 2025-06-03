@@ -1,4 +1,4 @@
-const mongoose = require('../config/database');
+const {mongoose} = require('../config/database');
 
 const userSchema = new mongoose.Schema({
     // note:  _id: true (enable) || false (disable),
@@ -10,15 +10,13 @@ const userSchema = new mongoose.Schema({
 }, {
     statics: {
         findByEmail(email) {
-            return this.find({email: new RegExp(email)})
+            return this.findOne({email: new RegExp(email)})
         }
     }
 });
 
 const User = mongoose.model('User', userSchema);
 
-await User.createCollection().then(() => {
-  console.log('User collection is created!');
-});
 
-exports.module = User
+
+module.exports = User

@@ -1,4 +1,4 @@
-const User = require('../models/User')
+const {User} = require('../models')
 
 exports.create = (email, password) => User.create({email: email, password: password})
 

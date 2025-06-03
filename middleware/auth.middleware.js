@@ -1,4 +1,6 @@
-exports.authMiddleWare = (req, res, next) => {
+const jwt = require('../utils/jwt')
+
+function authMiddleware(req, res, next) {
    const token = req.cookies.token;
     try {
         const decode = jwt.verifyToken(token)
