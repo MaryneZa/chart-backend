@@ -1,7 +1,6 @@
 const User = require('./User')
 const Data = require('./Data')
-
-(async () => {
+async function initCollections() {
   try {
     await User.createCollection();
     console.log('User collection is created!');
@@ -10,11 +9,12 @@ const Data = require('./Data')
     console.log('Data collection is created!');
 
   } catch (err) {
-    console.error('Error creating User collection:', err);
+    console.error('Error creating collection:', err);
   }
-})();
+};
 
 module.exports = {
     User,
-    Data
+    Data,
+    initCollections
 }
